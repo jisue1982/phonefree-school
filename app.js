@@ -398,7 +398,7 @@ document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
 });
 
 /* ---------- 인쇄 ---------- */
-function esc(s){ return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function tm(min){ if(min==null) return ''; return Math.floor(min/60)+'시간 '+(min%60)+'분'; }
 
 function officialHead(no,title){
@@ -1224,9 +1224,9 @@ function renderTeacher(){
   ks('tkActs',TLIST.reduce((s,x)=>s+(x.acts||0),0));
   TLIST.forEach(st=>{
     const tr=document.createElement('tr');
-    tr.innerHTML='<td><input type="checkbox" class="tchk" value="'+st.code+'" checked></td><td>'+esc(st.cls)+'</td><td class="l">'+esc(st.name)+'</td><td title="학생코드는 화면에서 일부만 표시됩니다">'+esc(maskStudentCode(st.code))+'</td>'
+    tr.innerHTML='<td><input type="checkbox" class="tchk" value="'+esc(st.code)+'" checked></td><td>'+esc(st.cls)+'</td><td class="l">'+esc(st.name)+'</td><td title="학생코드는 화면에서 일부만 표시됩니다">'+esc(maskStudentCode(st.code))+'</td>'
       +'<td>'+(st.n||0)+'</td><td>'+(st.s||0)+'</td><td>'+(st.p||0)+'</td><td>'+(st.r||0)+'</td><td>'+Math.floor((st.min||0)/60)+'h</td><td>'+esc(String(st.last||''))+'</td>'
-      +'<td><button class="mini" data-k="sheet" data-c="'+st.code+'">2-1</button><button class="mini" data-k="pf" data-c="'+st.code+'">2-2</button><button class="mini" data-k="growth" data-c="'+st.code+'">2-3</button><button class="mini" data-k="rec" data-c="'+st.code+'">추천서</button><button class="mini" data-k="notes" data-c="'+st.code+'">일기</button><button class="mini tdelete" data-c="'+st.code+'" style="color:#B23A3A">기록삭제</button></td>';
+      +'<td><button class="mini" data-k="sheet" data-c="'+esc(st.code)+'">2-1</button><button class="mini" data-k="pf" data-c="'+esc(st.code)+'">2-2</button><button class="mini" data-k="growth" data-c="'+esc(st.code)+'">2-3</button><button class="mini" data-k="rec" data-c="'+esc(st.code)+'">추천서</button><button class="mini" data-k="notes" data-c="'+esc(st.code)+'">일기</button><button class="mini tdelete" data-c="'+esc(st.code)+'" style="color:#B23A3A">기록삭제</button></td>';
     b.appendChild(tr);
   });
   b.querySelectorAll('.mini:not(.tdelete)').forEach(x=>x.onclick=()=>tPrint([x.dataset.c],x.dataset.k));

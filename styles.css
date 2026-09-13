@@ -843,3 +843,8 @@ body{background:linear-gradient(#F8FBFF 0,#EEF7FF 48%,#F9FBFF 100%);}
 .privacy-modal p,.privacy-modal li{font-size:13px;line-height:1.6;color:#42546A}
 .privacy-modal .privacy-close{width:100%;margin-top:14px;border:0;background:#245FB8;color:#fff;border-radius:12px;padding:11px;font-weight:700;cursor:pointer}
 @media(max-width:720px){.student-logout{padding:6px 7px;font-size:10px}.privacy-modal{padding:17px}}
+
+.site-footer{margin:32px auto 16px;padding:14px 16px;text-align:center;font-size:.8rem;color:#6b7280;line-height:1.6}
+.site-footer a{color:#2457d6;text-decoration:underline}
+.footer-mini{font-size:.72rem;opacity:.85}
+@media print{.site-footer{display:none}}
