@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- v8.1: 학습지원 소프트웨어 필수기준 체크리스트 대응 -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>폰프리 100일의 기적 · 5·6학년</title>
+<meta name="description" content="수원매화초등학교 5·6학년 학생이 100일 동안 스마트폰 사용 습관을 돌아보고 독서·예술문화·스포츠·관계 성장 활동을 기록하는 폰프리 실천 웹앱입니다.">
+<meta name="theme-color" content="#1B2358">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<link rel="canonical" href="https://100-v80.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="폰프리스쿨 100일의 기적">
+<meta property="og:description" content="폰 OFF, RAS ON! 오늘 기록과 내 활동을 차근차근 남기는 100일 폰프리 성장 프로젝트">
+<meta property="og:url" content="https://100-v80.vercel.app/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div id="login">
+    <button type="button" class="admin-entry-top" id="adminEntryTop">👩‍🏫 관리자</button>
+
+    <div class="login-shell">
+      <div class="login-story">
+        <div class="mini-brand">🚀 수원매화초등학교 · PHONE-FREE 100 DAYS</div>
+        <h1>폰프리스쿨<br><em>100일의 기적</em></h1>
+        <p>휴대폰을 조금 내려놓고, 더 재미있는 활동과 더 멋진 나를 만나러 가는 100일 여행!</p>
+        <div class="login-characters">
+          <div class="login-mascot-img"><img src="" data-char-image="maehwabyeol" alt="매화별"></div>
+          <div class="login-mascot-img secondary"><img src="" data-char-image="byeolbit" alt="별빛"></div>
+        </div>
+      </div>
+      </div>
+      <div class="login-card">
+        <h2>오늘도 여행을 이어가볼까?</h2>
+        <div class="muted">선생님이 알려준 학생코드를 입력하세요.</div>
+        <div class="login-code-label">학생코드</div>
+        <input id="codeIn" maxlength="10" placeholder="예: M503AB" autocomplete="off">
+        <button class="btn login-primary" id="loginBtn">🚀 폰프리 여행 시작하기</button>
+        <div class="login-help">💡 코드를 잊었으면 담임 선생님께 물어보세요. 같은 기기에서는 다음 접속부터 더 빠르게 시작할 수 있어요.</div>
+        <div class="character-panel">
+          <h3>나와 함께할 캐릭터를 골라봐!</h3>
+          <p>선택한 캐릭터가 100일 동안 응원해줘요.</p>
+          <div class="character-grid maehwa-six">
+            <button type="button" class="character-choice on" data-char-id="maehwabyeol" data-name="매화별" data-say="오늘 피운 작은 습관이 100일 뒤 멋진 꽃이 될 거야!">
+              <div class="face"><img src="" data-char-image="maehwabyeol" alt="매화별"></div><b>매화별</b><small>매화초 대표 캐릭터</small>
+            </button>
+            <button type="button" class="character-choice" data-char-id="byeolbit" data-name="별빛" data-say="좋아! 오늘도 폰프리 우주로 출발!">
+              <div class="face"><img src="" data-char-image="byeolbit" alt="별빛"></div><b>별빛</b><small>씩씩한 우주 탐험가</small>
+            </button>
+            <button type="button" class="character-choice" data-char-id="coco" data-name="코코" data-say="새로운 좋은 습관 데이터를 발견했어!">
+              <div class="face"><img src="" data-char-image="coco" alt="코코"></div><b>코코</b><small>호기심 미니 로봇</small>
+            </button>
+            <button type="button" class="character-choice" data-char-id="mongsil" data-name="몽실" data-say="폰 대신 재미있는 걸 하러 가자! 멍!">
+              <div class="face"><img src="" data-char-image="mongsil" alt="몽실"></div><b>몽실</b><small>활발한 강아지</small>
+            </button>
+            <button type="button" class="character-choice" data-char-id="tori" data-name="토리" data-say="천천히 해도 괜찮아. 오늘 한 걸음이면 충분해!">
+              <div class="face"><img src="" data-char-image="tori" alt="토리"></div><b>토리</b><small>다정한 토끼</small>
+            </button>
+            <button type="button" class="character-choice" data-char-id="rumi" data-name="루미" data-say="오늘의 폰프리 미션을 멋지게 찾아볼까?">
+              <div class="face"><img src="" data-char-image="rumi" alt="루미"></div><b>루미</b><small>영리한 별여우</small>
+            </button>
+          </div>
+        </div>
+        <div class="teacher-entry">
+          <button class="tlink" id="tlink" type="button">선생님은 여기로 들어가요 →</button>
+          <div id="tbox" class="hidden" style="margin-top:10px">
+            <label for="tpw" style="display:block;font-size:12px;font-weight:700;color:#536987;margin-bottom:6px">선생님 비밀번호</label>
+            <div class="teacher-pw-row">
+              <input type="password" id="tpw" placeholder="설정한 비밀번호 입력" autocomplete="current-password">
+              <button type="button" id="tpwToggle" class="pw-toggle" aria-label="비밀번호 보기">보기</button>
+            </div>
+            <div class="teacher-login-msg" id="teacherLoginMsg">스프레드시트의 <b>폰프리 → 선생님 비밀번호 설정</b>에서 먼저 비밀번호를 정해주세요.</div>
+            <button class="btn second" id="tbtn" type="button" style="margin-top:9px;background:#fff">학급 현황 열기</button>
+          </div>
+        </div>
+        <div class="err" id="loginErr"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="admin-modal" id="adminModal">
+  <div class="admin-modal-card">
+    <h2>👩‍🏫 관리자 로그인</h2>
+    <div class="muted">선생님 비밀번호를 입력하면 학급 전체 현황으로 이동합니다.</div>
+    <label for="adminPw" style="font-size:12px;font-weight:700;color:#536987">선생님 비밀번호</label>
+    <div class="teacher-pw-row" style="margin-top:6px">
+      <input type="password" id="adminPw" placeholder="비밀번호 입력" autocomplete="current-password">
+      <button type="button" id="adminPwToggle" class="pw-toggle">보기</button>
+    </div>
+    <div class="teacher-login-msg" id="adminLoginMsg">스프레드시트에서 설정한 선생님 비밀번호를 입력하세요.</div>
+    <button class="btn" id="adminLoginBtn" type="button" style="margin-top:10px">학급 현황 열기</button>
+    <button class="admin-modal-close" id="adminModalClose" type="button">닫기</button>
+  </div>
+</div>
+
+<div id="teacher" class="hidden">
+  <h1 style="font-size:24px;margin:8px 0 2px">👩‍🏫 학급 전체 현황</h1>
+  <div class="muted" style="margin-bottom:8px">체크한 학생을 한 번에 인쇄할 수 있어요. 교육청 제출용 2-1·2-2·2-3과 학교장 추천서를 한 번에 준비할 수 있습니다.</div>
+
+  <div class="teacher-summary">
+    <div class="teacher-kpi"><b id="tkStudents">0</b><span>전체 학생</span></div>
+    <div class="teacher-kpi"><b id="tkToday">0</b><span>기록 중 학생</span></div>
+    <div class="teacher-kpi"><b id="tkDone">0</b><span>80일 이상 기록</span></div>
+    <div class="teacher-kpi"><b id="tkActs">0</b><span>활동 기록 합계</span></div>
+  </div>
+
+  <div class="tools">
+    <button class="btn" id="tPrintSheet">선택 학생 실천기록지(2-1) 인쇄</button>
+    <button class="btn" id="tPrintPf">선택 학생 포트폴리오(2-2) 인쇄</button>
+    <button class="btn second" id="tPrintBoth">2-1 + 2-2 인쇄</button>
+    <button class="btn second" id="tPrintGrowth">선택 학생 2-3 인쇄</button>
+    <button class="btn second" id="tPrintRec">학교장 추천서 인쇄</button>
+    <button class="btn second" id="tPrintFull">제출서류 전체 인쇄</button>
+    <button class="btn second" id="tRefresh">새로고침</button>
+    <button class="btn second" id="tLogout">나가기</button>
+  </div>
+
+  <div class="teacher-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="tAll" checked></th>
+          <th>반</th><th>이름</th><th>코드</th><th>기록일</th>
+          <th>★</th><th>△</th><th>↺</th><th>누적사용</th><th>마지막</th><th>개별 인쇄</th>
+        </tr>
+      </thead>
+      <tbody id="tBody"></tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- v7.9 중간 성장 기록일 팝업 -->
+<div class="growth-day-overlay" id="growthDayOverlay" role="dialog" aria-modal="true" aria-labelledby="growthDayTitle">
+  <div class="growth-day-modal">
+    <div class="growth-day-icon" id="growthDayIcon">🌱</div>
+    <h2 id="growthDayTitle">오늘은 <span class="bigday" id="growthDayNum">30일</span> 중간 성장 기록하는 날!</h2>
+    <p id="growthDayCopy">지금까지 달라진 점을 한두 문장으로 남겨두면 마지막 성장 수기를 쓸 때 큰 도움이 돼요.</p>
+    <div class="growth-route">📍 기록 위치 · 상단 <b>「제출 준비」</b> → 맨 위 <b>「중간 성장 기록」</b> → 오늘 날짜 칸</div>
+    <div class="growth-day-actions">
+      <button type="button" class="growth-day-later" id="growthDayLater">잠시 후 할게요</button>
+      <button type="button" class="growth-day-go" id="growthDayGo">✍️ 지금 중간 성장 기록하기</button>
+    </div>
+  </div>
+</div>
+
+<div class="app hidden">
+
+  <div class="top">
+    <div class="brand-wrap">
+      <div class="brand-rocket">🚀</div>
+      <div>
+        <h1>폰프리스쿨 <span class="brand100">100일의 기적</span></h1>
+        <div class="sub">지금, 더 멋진 나를 만나는 시간! · <span id="who">이름을 먼저 적어줘</span></div>
+      </div>
+    </div>
+    <div class="desktop-nav">
+      <button class="on" data-p="home">🏠 홈</button>
+      <button data-p="home" data-scroll="recordFocus">① 오늘 기록 <span class="nav-check" id="navRecordCheck"></span></button>
+      <button data-p="play">⭐ 폰 대신 뭐하지?</button>
+      <button data-p="pf">② 내 활동 <span class="nav-check" id="navActCheck"></span></button>
+      <button data-p="print">📄 제출 준비</button>
+      <button data-p="parent">💌 메시지</button>
+    </div>
+    <div class="profile-pill">
+      <div class="profile-avatar">👧🏻</div>
+      <div class="profile-copy"><b id="profileName">학생</b><span id="profileClass">5·6학년</span></div>
+      <button type="button" class="student-logout" id="studentLogout" title="이 기기에서 로그아웃">로그아웃</button>
+    </div>
+    <div class="dday"><b id="ddayNum">–</b><span id="ddayLabel">일째</span></div>
+  </div>
+
+  <div class="daily-mission-bar" id="dailyMissionBar">
+    <div class="daily-mission-title"><b>🎯 오늘의 필수 기록 · 딱 2단계!</b><span>① 오늘 기록 → ② 내 활동 → 끝</span></div>
+    <div class="daily-mission-steps">
+      <button class="daily-step" id="stepRecord"><strong>① 오늘 기록</strong><small id="stepRecordText">먼저 작성해요</small></button>
+      <div class="daily-arrow">→</div>
+      <button class="daily-step" id="stepActivity"><strong>② 내 활동</strong><small id="stepActivityText">그다음 작성해요</small></button>
+      <div class="daily-arrow">→</div>
+      <div class="daily-finish" id="stepFinish">오늘 기록 완료!</div>
+    </div>
+  </div>
+
+
+  <!-- ===== 기록 탭 ===== -->
+  <section class="page on" id="p-home">
+    <div class="school-mode-banner" id="schoolModeBanner">
+      <b>📵 실천은 스마트폰 밖에서, 기록은 학교에서 1~2분!</b><br>
+      어제 집에서 실천한 내용을 짧게 기록하고, 오늘 할 R·A·S·관계 활동 하나를 정한 뒤 화면을 닫아요.
+    </div>
+    <div class="space-hero">
+      <div class="space-stars"></div>
+      <div class="speech left">할 수 있어!</div>
+      <div class="speech right">지금도 충분히 멋져!</div>
+      <div class="hero-astronaut">👩🏻‍🚀</div>
+      <div class="hero-pet">🐶</div>
+      <div class="hero-center">
+        <div class="hero-avatar-badge"><span class="av" id="heroChar"><img src="" data-char-image="maehwabyeol" alt="매화별"></span><span><b id="heroCharName">매화별</b>이 함께 응원 중!</span></div>
+        <div class="hero-greeting"><span id="heroName">친구야</span>,<br>오늘도 <em>멋진 하루</em>를 만들어볼까?</div>
+        <div class="hero-caption">작은 실천이 모여 100일의 기적이 됩니다!</div>
+        <div class="hero-daybox">
+          <div><div class="day-label">📅 오늘은</div><div class="day-number">DAY <span id="journeyDay">1</span></div></div>
+          <button class="hero-cta" id="goToday">⭐ 학교에서 기록하기 ›</button>
+        </div>
+      </div>
+      <span id="journeyStars" style="display:none">0</span><span id="jmStreak" style="display:none">0</span><span id="jmActs" style="display:none">0</span>
+      <span id="jmRecorded" style="display:none">0</span><span id="journeyCopy" style="display:none"></span><span id="journeyFill" style="display:none"></span>
+      <span id="journeyRemain" style="display:none"></span>
+    </div>
+
+    <div class="journey-strip">
+      <div class="journey-title">나의 100일 여정</div>
+      <div class="planet-road">
+        <div class="planet-points">
+          <div class="planet" id="rp10"><div class="planet-orb">🌱</div><b>10일</b><span>새로운 시작</span></div>
+          <div class="planet" id="rp30"><div class="planet-orb">🌿</div><b>30일</b><span>습관이 되는 나</span></div>
+          <div class="planet" id="rp50"><div class="planet-orb">🌳</div><b>50일</b><span>더 단단한 나</span></div>
+          <div class="planet" id="rp70"><div class="planet-orb">🪐</div><b>70일</b><span>빛나는 나</span></div>
+          <div class="planet" id="rp100"><div class="planet-orb">🌍</div><b>100일</b><span>나의 새로운 세상</span></div>
+        </div>
+      </div>
+      <div id="roadFill" style="display:none"></div>
+    </div>
+
+    <div class="badge-strip" id="badgeStrip">
+      <div class="badge-card" data-badge="10"><div class="badge-medal">🌱</div><b>첫걸음 배지</b><span>10일 달성</span></div>
+      <div class="badge-card" data-badge="30"><div class="badge-medal">🌿</div><b>습관 배지</b><span>30일 달성</span></div>
+      <div class="badge-card" data-badge="50"><div class="badge-medal">🌳</div><b>반환점 배지</b><span>50일 달성</span></div>
+      <div class="badge-card" data-badge="70"><div class="badge-medal">🏆</div><b>도전자 배지</b><span>70일 달성</span></div>
+      <div class="badge-card" data-badge="100"><div class="badge-medal">✨</div><b>100일 완주</b><span>100일 달성</span></div>
+    </div>
+
+    <div class="character-growth-card" id="characterGrowthCard">
+      <div class="cg-avatar-wrap">
+        <div class="cg-avatar" id="cgAvatar"></div>
+        <div class="cg-accessory" id="cgAccessory">🌱</div>
+      </div>
+      <div class="cg-main">
+        <div class="cg-title"><b id="cgName">매화별</b>도 함께 성장 중!</div>
+        <div class="cg-level"><span id="cgLevel">LV.1</span><span id="cgStage">첫걸음</span></div>
+        <div class="cg-bar"><i id="cgBar"></i></div>
+        <div class="cg-copy" id="cgCopy">오늘 기록을 남기면 캐릭터도 함께 자라요.</div>
+<div class="balance-mini" id="balanceMini">
+<span data-balance="R">📚 R <b>0</b></span><span data-balance="A">🎨 A <b>0</b></span>
+<span data-balance="S">⚽ S <b>0</b></span><span data-balance="F">🤝 관계 <b>0</b></span>
+</div><div class="balance-msg" id="balanceMsg">네 가지 활동을 골고루 해보자!</div>
+      </div>
+      <div class="cg-next"><small>다음 성장까지</small><b id="cgNext">10일</b></div>
+    </div>
+
+    <div class="home-dashboard">
+      <div class="dash-card">
+        <h2>나의 오늘 현황</h2>
+        <div class="quick-stat"><span><span class="ico">⭐</span> 모은 별</span><b id="dashStars">0개</b></div>
+        <div class="quick-stat"><span><span class="ico">📅</span> 기록한 날</span><b id="dashDays">0일</b></div>
+        <div class="quick-stat"><span><span class="ico">🔥</span> 연속 기록</span><b id="dashStreak">0일</b></div>
+        <div class="quick-stat"><span><span class="ico">🌱</span> 대체 활동</span><b id="dashActs">0개</b></div>
+        <div class="quote-box">“오늘의 작은 선택이<br>내일의 멋진 나를 만든다.”</div>
+      </div>
+
+      <div class="dash-card mission-panel" id="recordFocus">
+        <div class="compact-record-label"><b>💻 어제 기록하기</b><span>사용시간 → 결과 → 한 줄 기록 → 저장</span></div>
+        <div class="mission-title">🌱 어제 실천 3단계 기록</div>
+        <div class="mission-grid">
+          <div class="mission-box">
+            <div class="mission-num">1</div><div class="memoji">🕒</div>
+            <b>어제 몇 분<br>사용했나요?</b>
+            <button id="missionTime">입력하기 ›</button>
+          </div>
+          <div class="mission-box">
+            <div class="mission-num">2</div><div class="memoji">⭐</div>
+            <b>어제의 도전<br>어땠나요?</b>
+            <button id="missionResult">선택하기 ›</button>
+          </div>
+          <div class="mission-box">
+            <div class="mission-num">3</div><div class="memoji">✏️</div>
+            <b>어제 폰 대신<br>무엇을 했나요?</b>
+            <button id="missionNote">기록하기 ›</button>
+          </div>
+        </div>
+
+        <div class="card" style="margin:12px 0 0;box-shadow:none;background:rgba(255,255,255,.72)" id="recordEditor">
+          <div class="day-title"><h2 id="dayTitle">학교에서 기록하기</h2><small id="dayDate"></small></div>
+          <div class="time-row">
+            <input type="number" id="h" min="0" max="24" placeholder="0"><span>시간</span>
+            <input type="number" id="m" min="0" max="59" placeholder="0"><span>분</span>
+          </div>
+          <div class="choices">
+            <button class="choice star" data-v="star"><b>★</b><span>해냈어!</span></button>
+            <button class="choice part" data-v="part"><b>△</b><span>노력했어</span></button>
+            <button class="choice retry" data-v="retry"><b>↺</b><span>다시 도전</span></button>
+          </div>
+          <div class="prompt">
+            <div class="prompt-mode" id="promptMode">💬 오늘의 한 줄 질문</div>
+            <div id="promptBox"></div>
+            <div class="prompt-tip">정답은 없어. 오늘 있었던 일을 솔직하게 한두 문장만 적어도 충분해!</div>
+          </div>
+          <textarea id="note" placeholder="한 줄만 써도 돼. 100일 뒤 나의 성장 기록이 돼!"></textarea>
+          <div style="height:8px"></div>
+          <button class="btn finish-today" id="save">① 오늘 기록 저장하기</button><div class="next-step-callout" id="recordNextCallout">✓ ① 오늘 기록 완료! 이제 <button type="button" id="goActivityNow">② 내 활동 기록하기 →</button></div>
+        </div>
+      </div>
+
+      <div class="dash-card growth-mini">
+        <h2>30일 성장기록</h2>
+        <div class="growth-tabs"><button class="growth-tab on">30일</button><button class="growth-tab">50일</button><button class="growth-tab">70일</button><button class="growth-tab">100일</button></div>
+        <div class="growth-question"><div class="sprout">🌱</div><b>지금까지 가장<br>달라진 점은 무엇인가요?</b><button id="growthQuick">지금 작성하기 ›</button></div>
+      </div>
+    </div>
+
+    <button type="button" class="home-compact-toggle" id="homeMoreToggle" aria-expanded="false">
+      <span id="homeMoreLabel">나의 100일 · 성장 자세히 보기</span><span class="arr">⌄</span>
+    </button>
+
+    <div class="feature-row">
+      <div class="feature-card purple"><div class="fi">🎲</div><h3>폰 대신 뭐하지?</h3><p>다양한 활동 아이디어로 더 재미있는 하루!</p><button data-go-page="play">🎲 하나 골라줘!</button></div>
+      <div class="feature-card green"><div class="fi">📚</div><h3>내 활동 컬렉션</h3><p>내가 해본 멋진 활동들을 모아봐요!</p><button data-go-page="pf">활동 보기 ›</button></div>
+      <div class="feature-card orange"><div class="fi">📄</div><h3>제출 준비하기</h3><p>교육청 제출 서류를 미리 확인하고 준비해요!</p><button data-go-page="print">제출 서류 보기 ›</button></div>
+      <div class="feature-card blue"><div class="fi">👨‍👩‍👧</div><h3>부모님과 함께</h3><p>우리 가족의 응원 한마디!</p><button data-go-page="parent">부모님 글 보기 ›</button></div>
+      <div class="feature-card pink"><div class="fi">💌</div><h3>나의 메시지</h3><p>선생님이 보내는 응원 메시지!</p><button data-go-page="parent">메시지 보기 ›</button></div>
+    </div>
+
+    <div class="card night" style="margin-top:16px">
+      <div class="sky-head"><h2>나의 별 하늘</h2><span class="muted" id="starCount">별 0개</span></div>
+      <div class="grid" id="grid"></div>
+      <div class="stages" id="stages"></div>
+      <div class="legend"><span><i style="background:var(--star)"></i>★ 성공</span><span><i style="background:var(--mint)"></i>△ 조금 성공</span><span><i style="background:var(--peach)"></i>↺ 다시 시작</span></div>
+    </div>
+
+    <div class="card">
+      <div class="stats">
+        <div class="stat"><b id="stStar">0</b><span>성공한 날</span></div>
+        <div class="stat"><b id="stStreak">0</b><span>연속 기록</span></div>
+        <div class="stat"><b id="stTotal">0h</b><span>100일 폰 사용</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 놀거리 탭 ===== -->
+  <section class="page" id="p-play">
+    <div class="card">
+      <h2>폰 대신 뭐 하지?</h2>
+      <div class="chips" id="chips">
+        <button class="chip on" data-c="all">전부</button>
+        <button class="chip" data-c="R">독서</button>
+        <button class="chip" data-c="A">예술</button>
+        <button class="chip" data-c="S">운동</button>
+        <button class="chip" data-c="M">음악</button>
+        <button class="chip" data-c="F">가족·친구</button>
+      </div>
+      <div class="character-recommend" id="characterRecommend">
+        <div class="cr-avatar" id="crAvatar"></div>
+        <div><b id="crTitle">매화별 추천</b><span id="crCopy">오늘 너에게 어울리는 활동을 골라줄게!</span></div>
+      </div>
+      <div class="roulette-out" id="rout">버튼을 눌러봐</div>
+      <button class="btn second" id="spin">돌려보기</button>
+      <p class="muted" style="margin:10px 0 0">여기는 아이디어만 주는 곳이야. 진짜로 하고 나서, 포트폴리오 탭에 네 말로 적으면 돼.</p>
+    </div>
+
+    <div class="card">
+      <h2>폰이 너무 하고 싶을 때</h2>
+      <details><summary>학원 끝나고 집에 올 때</summary><p>폰은 가방 안쪽 주머니에. 오늘 학원에서 제일 웃겼던 일 하나를 집에 가서 말해주기로 정해봐. 걷는 동안 생각하면 심심하지 않아.</p></details>
+      <details><summary>저녁 먹고 쇼츠 보고 싶을 때</summary><p>딱 하나만 정해서 해. 줄넘기 100개, 그림 한 장, 책 10쪽. 그걸 끝내면 오늘은 성공이야. 쇼츠는 "하나만"이 안 되니까 시작을 안 하는 게 더 쉬워.</p></details>
+      <details><summary>자기 전에 침대에서</summary><p>폰은 내 방 밖에서 충전. 처음 3일이 제일 힘들고 그다음엔 잠이 빨리 와. 잠이 안 오면 책을 조금 읽어.</p></details>
+      <details><summary>단톡방 알림이 계속 올 때</summary><p>알림을 끄고 "저녁 8시에 한 번만 확인"처럼 시간을 정해. 친구들한테 "나 폰프리 하는 중이야"라고 미리 말해두면 편해.</p></details>
+      <details><summary>친구가 게임 같이 하자고 할 때</summary><p>"주말에 한 판만" 이렇게 날짜를 정해서 약속해. 안 되는 날은 "오늘은 안 돼, 대신 내일 축구할래?"라고 다른 걸 제안해봐.</p></details>
+      <details><summary>이미 실패했을 때</summary><p>괜찮아. ↺를 누르고 왜 그랬는지 한 줄만 써. 다시 시작한 기록이 있어야 "회복 과정"이 보여서 오히려 점수가 돼.</p></details>
+    </div>
+  </section>
+
+  <!-- ===== 포트폴리오 탭 ===== -->
+  <section class="page" id="p-pf"><div class="pf-required-head"><b>② 내 활동 기록하기</b><span>① 오늘 기록을 저장한 다음, 오늘 폰 대신 한 활동을 하나 기록하면 오늘의 필수 기록이 끝나요.</span></div><div class="card collection-card"><h2>🎒 내가 모은 폰 대신 활동</h2><div class="muted">활동을 모으면 제출 포트폴리오로 자동 정리돼요.</div>
+<div class="collection-grid"><div class="collection"><div class="emoji">📚</div><b id="colR">0개</b><span>R · 독서</span></div><div class="collection"><div class="emoji">🎨</div><b id="colA">0개</b><span>A · 예술문화</span></div><div class="collection"><div class="emoji">⚽</div><b id="colS">0개</b><span>S · 스포츠</span></div><div class="collection"><div class="emoji">❤️</div><b id="colF">0개</b><span>관계성장</span></div></div></div>
+    <div class="card plan-card">
+      <button type="button" class="plan-toggle" id="planToggle">수정하기 ▾</button>
+      <h2>실천 계획</h2>
+      <p class="muted" style="margin:0 0 6px">서식2-2의 앞부분이야. 100일 시작할 때 한 번 쓰고, 바뀌면 고쳐도 돼. (바꾸면 자동 저장)</p>
+      <div class="field"><label>100일 동안 바꾸고 싶은 폰 습관 (3가지)</label>
+        <input id="pfH1" placeholder="① 예) 자기 전에 침대에서 쇼츠 보기">
+        <input id="pfH2" placeholder="②" style="margin-top:6px">
+        <input id="pfH3" placeholder="③" style="margin-top:6px"></div>
+      <div class="field"><label>나의 목표 (3가지, 구체적으로)</label>
+        <input id="pfG1" placeholder="① 예) 학교 있는 동안 폰 안 쓰기">
+        <input id="pfG2" placeholder="② 예) 밥 먹을 때 폰 내려놓기" style="margin-top:6px">
+        <input id="pfG3" placeholder="③ 예) 자기 1시간 전에 폰 끄기" style="margin-top:6px"></div>
+      <div class="prompt">나의 다짐: 나는 2026. 9. 7.~12. 15. 100일 동안 내가 정한 폰프리 규칙을 자발적으로 실천하고, 성공한 날뿐 아니라 어려웠던 날과 다시 시작한 과정도 솔직하게 기록하겠습니다. <span class="muted">(서식에 인쇄돼)</span></div>
+      <div style="height:10px"></div>
+      <button class="btn second" id="savePf">실천 계획 저장</button>
+    </div>
+
+    <div class="card activity-entry-card" id="activityEntry">
+      <h2>② 오늘 폰 대신 한 활동 기록</h2>
+      <p class="muted" style="margin:0 0 6px">한 일이 생길 때마다 한 개씩 저장해. 100일 뒤에 여기 모인 걸로 포트폴리오를 정리해.</p>
+      <div class="chips" id="actCats">
+        <button class="chip on" data-c="R">R 독서</button><button class="chip" data-c="A">A 예술</button><button class="chip" data-c="S">S 운동</button><button class="chip" data-c="M">M 음악</button><button class="chip" data-c="F">관계·성장</button>
+      </div>
+      <div class="row2" style="margin-top:8px">
+        <div class="field"><label>언제</label><input type="date" id="actDate" min="2026-09-07" max="2026-12-15"></div>
+        <div class="field"><label>얼마나 (선택)</label><input id="actHow" placeholder="30분, 20쪽, 100개"></div>
+      </div>
+      <div class="field"><label>무엇을 했어?</label><input id="actWhat" placeholder="예) 『○○』 3장까지 읽음"></div>
+      <div class="field"><label>느낀 점·생각한 점</label><textarea id="actFeel" style="min-height:52px" placeholder="예) 주인공이 포기 안 하는 게 멋졌다"></textarea>
+      <div class="muted" style="margin-top:4px">진짜로 한 일만, 네가 느낀 걸 네 말로 적어. 이게 포트폴리오에서 제일 중요해.</div></div>
+      <button class="btn" id="actAdd">② 내 활동 저장하고 오늘 기록 끝내기</button>
+      <div class="next-step-callout" id="activityDoneCallout">🎉 오늘의 필수 기록을 모두 마쳤어요. 이제 화면을 닫고 폰프리 시간을 보내요!</div>
+    </div>
+
+    <div class="card activity-history-card">
+      <div class="day-title"><h2>모아둔 활동</h2><small id="actSummary"></small></div>
+      <div class="chips" id="actFilter" style="margin:6px 0">
+        <button class="chip on" data-c="all">전부</button><button class="chip" data-c="R">R</button><button class="chip" data-c="A">A</button><button class="chip" data-c="S">S</button><button class="chip" data-c="M">M</button><button class="chip" data-c="F">관계</button>
+      </div>
+      <div id="actHint" class="prompt"></div>
+      <div id="actList"></div>
+      <p class="muted" style="margin:10px 0 0">체크가 켜진 활동만 포트폴리오(서식2-2)에 인쇄돼. 100일 뒤 제일 의미 있었던 것만 남기고 정리하면 돼.</p>
+    </div>
+  </section>
+
+  <!-- ===== 부모님 탭 ===== -->
+  <section class="page" id="p-parent">
+    <div class="card parent-guide-card">
+      <div class="parent-guide-top">
+        <div>
+          <h2>👨‍👩‍👧 부모님과 함께 보는 곳</h2>
+          <p class="muted" style="margin:0">이번 주 기록을 함께 보고, 부모님이 짧게 한마디 남겨주세요.</p>
+        </div>
+        <div class="parent-badge">주 1회</div>
+      </div>
+      <div class="prompt parent-tip">💌 잘한 점 하나, 달라진 점 하나면 충분해요. 예) “밥 먹을 때 폰을 안 보니 이야기가 늘었어요.”</div>
+      <div class="muted" style="font-size:11.5px;margin-top:8px">남긴 글은 100일 뒤 서식2-2의 ‘학부모 의견’ 작성에 활용할 수 있어요.</div>
+    </div>
+    <div class="card parent-weeks-card" id="weeks"></div>
+  </section>
+
+  <!-- ===== 인쇄·설정 탭 ===== -->
+  <section class="page" id="p-print"><div class="card milestone-card"><h2>🌱 중간 성장 기록</h2><div class="muted">30·50·70·100일에 한두 문장씩 남겨두면 마지막 수기가 훨씬 쉬워져요.</div>
+<div class="field"><label>30일 · 처음 달라진 점</label><textarea id="ms30"></textarea></div>
+<div class="field"><label>50일 · 가장 힘들었던 순간</label><textarea id="ms50"></textarea></div>
+<div class="field"><label>70일 · 폰 대신 발견한 것</label><textarea id="ms70"></textarea></div>
+<div class="field"><label>100일 · 내가 성장한 점</label><textarea id="ms100"></textarea></div>
+<button class="btn second" id="saveMilestones">중간 성장 기록 저장</button></div>
+    <div class="card">
+      <h2>내 정보</h2>
+      <div class="field"><label>이름</label><input id="fName"></div>
+      <div class="row2">
+        <div class="field"><label>학교</label><input id="fSchool" placeholder="○○초등학교"></div>
+        <div class="field"><label>학년/반</label><input id="fClass" placeholder="5-3"></div>
+      </div>
+      <div class="field"><label>지역 (교육지원청)</label><input id="fRegion" placeholder="수원"></div>
+      <div class="privacy-inline">🔒 학생·보호자 연락처는 웹에서 입력·저장하지 않습니다. 공식 서식에 필요하면 출력 후 직접 작성해 주세요.</div>
+      <div class="field"><label>나의 목표</label>
+        <div class="goal">나는 하루 <input type="number" id="fGoal" min="0" max="24" step="0.5"> 시간 이상 폰을 안 쓰겠습니다.</div></div>
+      <button class="btn second" id="saveInfo">정보 저장</button>
+    </div>
+
+    <div class="card">
+      <h2>인쇄하기</h2>
+      <p class="muted" style="margin:0 0 10px">여기서 기록한 게 그대로 서식2-1(실천기록지) 모양으로 나와요. 인쇄한 뒤 담임 선생님과 보호자 사인을 받으면 돼요. 기록은 학교 시트에 저장되니 선생님이 대신 인쇄해 줄 수도 있어요.</p>
+      <button class="btn" id="printSheet">실천기록지(서식2-1) 인쇄</button>
+      <div style="height:8px"></div>
+      <button class="btn" id="printPf">포트폴리오(서식2-2) 인쇄</button>
+      <div style="height:8px"></div>
+      <button class="btn second" id="printNotes">한 줄 일기 모음 인쇄 (수기 쓸 때 참고)</button>
+      <p class="muted" style="margin:10px 0 0">인쇄 창에서 <b>용지 A4 · 배율 100% · 머리글/바닥글 끄기 · 배경 그래픽 켜기</b>로 맞춰주세요. 폰에서 인쇄가 안 되면 컴퓨터로 같은 코드로 들어와서 인쇄하면 돼요.</p>
+    </div>
+
+    <div class="card">
+      <h2>교육청 제출 준비 · [2-3] 변화·성장 수기</h2>
+      <div class="warn">이 부분은 <b>학생 본인의 실제 경험으로 직접 작성</b>해야 해요. 앱은 지금까지 저장한 기록을 떠올리는 데 도움만 줍니다. AI가 대신 쓴 문장을 그대로 제출하면 안 됩니다.</div>
+      <div class="submit-guide">
+        <div class="submit-step"><b>2-1</b><span>100일 실천기록지 · 사용시간과 ★/△/↺ 기록</span></div>
+        <div class="submit-step"><b>2-2</b><span>실천 계획 + R/A/S/관계성장 포트폴리오</span></div>
+        <div class="submit-step"><b>2-3</b><span>나의 실천 수기 · 변화 · 성장 · 항저우 탐방 계획</span></div>
+      </div>
+      <div class="growth-grid">
+        <div class="growth-box"><label>나의 실천 수기</label><p>100일 동안 스마트폰을 가장 사용하고 싶었던 순간은 언제였나요? 그때 어떻게 대응했고, 실패했더라도 어떻게 다시 시작했는지 구체적으로 적어주세요.</p><textarea id="grStory" placeholder="내가 직접 겪은 일을 내 말로 적어주세요."></textarea></div>
+        <div class="growth-box"><label>나의 변화</label><p>학습, 친구·가족 관계, 취미, 수면·생활 리듬 등에서 실제로 달라진 점을 전·후 사례 중심으로 적어주세요.</p><textarea id="grChange" placeholder="100일 전과 지금을 비교해 적어보세요."></textarea></div>
+        <div class="growth-box growth-connected"><label>나의 성장</label><p>R·A·S·관계 활동 가운데 가장 의미 있었던 활동과 그 이유, 새롭게 알게 된 나의 모습을 <b>내 말로</b> 적어주세요.</p>
+          <div class="growth-evidence" id="growthEvidence">
+            <div class="ge-head"><b>📊 내 기록에서 자동으로 가져온 성장 근거</b><span>글은 대신 써주지 않아요</span></div>
+            <div class="ge-stats" id="growthEvidenceStats"></div>
+            <div class="ge-balance" id="growthEvidenceBalance"></div>
+            <div class="ge-acts" id="growthEvidenceActs"></div>
+            <div class="ge-prompt" id="growthEvidencePrompt"></div>
+          </div>
+          <textarea id="grGrowth" placeholder="위의 실제 기록을 참고해서, 가장 의미 있었던 활동과 내가 새롭게 알게 된 점을 내 말로 적어보세요."></textarea></div>
+        <div class="growth-box"><label>탐방 계획</label><p>항저우에서 무엇을 보고·묻고·배우고 싶은지, 탐방 후 학교·학급·가족·지역사회에 어떻게 공유하고 실천을 이어갈지 적어주세요.</p><textarea id="grTrip" placeholder="보고 싶은 것 / 묻고 싶은 것 / 배운 뒤 공유할 방법"></textarea></div>
+      </div>
+      <div style="height:10px"></div>
+      <button class="btn second" id="saveGrowth">2-3 초안 저장</button>
+      <div style="height:8px"></div>
+      <button class="btn" id="printGrowth">[2-3] 변화·성장 수기 인쇄</button>
+      <div style="height:8px"></div>
+      <button class="btn second" id="printAllSubmit">2-1 + 2-2 + 2-3 한 번에 인쇄</button>
+    </div>
+
+    <div class="card">
+      <h2>기억해</h2>
+      <p style="margin:0">12월 15일까지 실천하고, 12월 21일까지 학교에 내야 해. 수기는 꼭 네가 직접 쓴 이야기여야 해. AI가 대신 쓴 글은 심사에서 빠져.</p>
+      <div style="height:12px"></div>
+      <button class="btn small second" id="reset" style="color:#B23A3A;border-color:#B23A3A">실천 기록 초기화</button>
+      <button class="btn small second" id="deviceReset" style="margin-top:8px">이 기기 앱 정보 초기화</button>
+      <p class="muted" style="margin:8px 0 0">기기 초기화는 이 브라우저에 남은 캐릭터·효과음 설정만 지우며, 학교에 저장된 실천 기록은 삭제하지 않습니다.</p>
+    </div>
+  </section>
+
+</div>
+
+<nav class="tabs hidden">
+  <button class="on" data-p="home"><b>★</b>기록</button>
+  <button data-p="play"><b>◎</b>폰 대신</button>
+  <button data-p="pf"><b>✎</b>내 활동</button>
+  <button data-p="parent"><b>♥</b>부모님</button>
+  <button data-p="print"><b>⎙</b>제출 준비</button>
+</nav>
+
+<!-- ===== 인쇄 전용 영역 ===== -->
+<div id="print"></div>
+
+<div class="savebar" id="savebar" aria-live="polite"></div>
+
+<script src="/app.js" defer></script>
+
+  
+  <div class="companion-dock" id="companionDock">
+    <div class="companion-bubble" id="companionBubble">오늘도 한 걸음이면 충분해!</div>
+    <div class="companion-char maehwa" id="companionChar"><img src="" data-char-image="maehwabyeol" alt="매화별"></div>
+  </div>
+
+  <div class="badge-toast" id="badgeToast">
+    <div class="badge-pop">
+      <div class="big" id="badgeToastIcon">🌱</div>
+      <h2 id="badgeToastTitle">새 배지 획득!</h2>
+      <p id="badgeToastText">첫걸음 배지를 얻었어!</p>
+      <button class="btn" id="badgeToastClose">좋아! 계속 가자 🚀</button>
+    </div>
+  </div>
+  <div class="confetti" id="confetti"></div>
+
+  <div class="finish-overlay" id="finishOverlay">
+    <div class="finish-modal">
+      <div class="finish-icon">🏆</div>
+      <h2>100일 완주!</h2>
+      <p><b id="finishName">친구야</b>, 100일 동안 정말 멋지게 달려왔어.<br>휴대폰을 내려놓은 시간만큼 새로운 경험을 많이 만났어!</p>
+      <div class="finish-summary">
+        <div><b id="finishStars">0</b><span>성공한 날</span></div>
+        <div><b id="finishActs">0</b><span>폰 대신 활동</span></div>
+        <div><b id="finishDays">100</b><span>기록한 날</span></div>
+      </div>
+      <button class="btn" id="finishToPrint">📄 나의 100일 결과 보기</button>
+      <button class="btn finish-close" id="finishClose">다시 홈으로</button>
+    </div>
+  </div>
+
+
+
+
+<div class="privacy-note" id="privacyNotice">
+  <strong>🔒 개인정보 안내</strong><br>
+  100일 실천에 필요한 최소한의 정보만 사용하며 학생·보호자 연락처는 웹에서 입력·저장하지 않습니다.
+  학생 기록은 개인코드로 구분하고 담당 교사는 관리자 인증 후 확인합니다.
+  <div class="privacy-mini">보유·삭제 기준은 학교 개인정보 처리방침과 관련 지침을 따릅니다.</div>
+  <button type="button" class="privacy-open" id="privacyOpen">개인정보 처리 안내 자세히 보기</button>
+</div>
+
+<div class="privacy-overlay" id="privacyOverlay" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+  <div class="privacy-modal">
+    <h2 id="privacyTitle">🔒 폰프리스쿨 개인정보 처리 안내</h2>
+    <p><strong>수원매화초등학교 「폰프리스쿨 100일의 기적」</strong>은 학생의 폰프리 실천·성장 교육활동을 위해 필요한 최소한의 개인정보만 처리합니다.</p>
+    <h3>1. 개인정보의 처리 목적</h3>
+    <p>학생의 100일 폰프리 실천 기록, 독서(R)·예술문화(A)·스포츠(S)·관계 활동 기록, 성장 성찰 및 포트폴리오 작성, 교사의 학급 운영·확인, 공식 제출자료 준비를 위해 처리합니다. 이 목적 이외의 용도로 이용하지 않습니다.</p>
+    <h3>2. 처리하는 개인정보 항목</h3>
+    <ul><li>기본정보: 이름, 학교, 학년·반, 지역(교육지원청), 학생 개인코드</li><li>실천기록: 날짜, 스마트폰 사용시간, ★/△/↺ 결과, 학생 성찰</li><li>활동·성장기록: R·A·S·관계 활동, 느낀 점, 30·50·70·100일 성장 기록, 변화·성장 수기</li><li>가정 연계: 보호자 주간 의견</li></ul>
+    <p><strong>수집하지 않는 정보:</strong> 주민등록번호, 주소, 학생 사진, 정밀 위치정보, 학생·보호자 전화번호. 공식 서식에 연락처가 필요한 경우 웹에 저장하지 않고 출력 후 별도로 작성합니다.</p>
+    <h3>3. 보유기간 및 파기</h3>
+    <p>교육활동 운영에 필요한 기간 동안만 보유하며, <strong>학교가 정한 보유기간이 끝나거나 처리 목적이 달성되면 지체 없이 삭제</strong>합니다. 학운위 제출 전 학교 개인정보 처리방침에 따른 구체적인 보유기간을 최종 확인합니다. 전자기록은 Google Sheets에서 삭제하고, 불필요한 출력물은 학교의 문서·개인정보 파기 절차에 따라 처리합니다.</p>
+    <h3>4. 개인정보의 안전성 확보 조치</h3>
+    <ul><li>학생별 개인코드로 기록을 구분하고 공용기기에 학생코드를 자동 저장하지 않습니다.</li><li>교사용 현황·삭제 기능은 관리자 비밀번호 인증 후에만 사용합니다.</li><li>교사 화면의 학생코드는 일부 마스킹하여 표시합니다.</li><li>학생·보호자 연락처 등 불필요한 개인정보는 웹에서 수집하지 않습니다.</li><li>HTTPS 통신을 사용하고, 프런트엔드와 데이터 저장 영역을 분리합니다.</li></ul>
+    <h3>5. 열람·정정·삭제·처리정지 요구</h3>
+    <p>학생 또는 법정대리인은 담당 교사에게 본인 기록의 <strong>열람·정정·삭제·처리정지</strong>를 요청할 수 있습니다. 담당 교사는 요청 내용을 확인한 뒤 학교 개인정보 처리 절차에 따라 처리합니다. 관리자용 기록 삭제 기능은 교사 인증 후에만 실행됩니다.</p>
+    <h3>6. 만 14세 미만 아동의 개인정보 보호</h3>
+    <p>본 서비스의 주 이용자는 초등학교 5·6학년으로 만 14세 미만 아동을 포함합니다. 학교는 서비스 이용 전에 학생·법정대리인에게 처리 목적, 항목, 보유기간, 권리 행사 방법을 안내하고, <strong>학교가 적용하는 적법한 절차에 따라 법정대리인 동의 등 필요한 보호 절차를 확인한 학생에게 개인코드를 발급</strong>하여 이용하도록 합니다.</p>
+    <h3>7. 개인정보 보호책임 및 문의</h3>
+    <p><strong>개인정보 보호책임:</strong> 수원매화초등학교 개인정보 보호책임 체계에 따릅니다.<br><strong>서비스 담당:</strong> 「폰프리스쿨 100일의 기적」 담당 교사<br><strong>문의:</strong> 수원매화초등학교를 통해 담당자에게 요청할 수 있습니다.</p>
+    <h3>8. 제3자 제공</h3>
+    <p>학생 개인정보를 교육활동 목적 외의 제3자에게 임의로 제공하지 않습니다. 법령에 근거하거나 별도의 적법한 절차가 필요한 경우에는 학교 개인정보 처리방침과 관련 절차를 따릅니다.</p>
+    <h3>9. 외부 서비스 이용 및 처리 구조</h3>
+    <p>웹 화면과 API 중계에는 <strong>Vercel</strong>, 서버 처리에는 <strong>Google Apps Script</strong>, 기록 저장에는 학교가 관리하는 <strong>Google Sheets</strong>를 사용합니다. Vercel은 요청을 Apps Script로 전달하는 중계 역할을 하며 앱 코드에서 학생 기록을 별도 데이터베이스에 저장하도록 구성하지 않았습니다. 학교는 실제 운영 전 관련 서비스 이용이 개인정보 처리위탁·국외 이전 등에 해당하는지 학교 개인정보 처리방침과 계약·관리 기준에 따라 확인하고 필요한 사항을 공개·관리합니다.</p>
+    <p class="privacy-mini"><strong>처리방침 확인 경로:</strong> 서비스 첫 화면 → 「개인정보 처리 안내 자세히 보기」 / <a href="/privacy.html" target="_blank" rel="noopener">별도 개인정보 처리 안내 페이지</a></p>
+    <button type="button" class="privacy-close" id="privacyClose">확인했어요</button>
+  </div>
+</div>
+
+<div class="creator-credit" id="creatorCredit">만든이 · <b>날아라 강쌤</b></div>
+<button type="button" class="sound-toggle" id="soundToggle" aria-label="소리 켜기/끄기" title="소리 켜기/끄기">🔊</button>
+<div class="sound-toast" id="soundToast">효과음 켜짐</div>
+
+</body>
+</html>
